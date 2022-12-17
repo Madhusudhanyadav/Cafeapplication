@@ -43,9 +43,9 @@ export default class Homepage extends Component {
           {
             this.state.imageList.map((element)=>{
               return (element.id===1?<div className="carousel-item active" key={element.id}>
-                        <img src={element.url} style={{height:"30rem",width:"30rem"}} className="d-block w-100" alt="..." />
+                        <img src={element.url} className="d-block w-100" alt="..." />
                     </div>:<div className="carousel-item " key={element.id}>
-                        <img src={element.url} style={{height:"30rem",width:"30rem"}} className="d-block w-100" alt="..." />
+                        <img src={element.url} className="d-block w-100" alt="..." />
                     </div>);
             
             })

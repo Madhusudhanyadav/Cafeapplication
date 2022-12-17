@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 import  { useState,useEffect } from 'react';
+import "../promises/Home.css";
+
 
 export default function Home() {
     const [imageList,setImageList]=useState([]);
@@ -12,7 +14,7 @@ export default function Home() {
     },[]);
 
   return (
-    <div className="container ">
+    <div className="container con">
         
     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-indicators">
