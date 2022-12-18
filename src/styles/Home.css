@@ -1,0 +1,32 @@
+.carousel{
+    /* margin-top: 2%; */
+    width: 60% !important;
+    height: 30% !important;
+    
+}
+
+body{
+    background:url("https://img.freepik.com/free-vector/gradient-dynamic-lines-background_23-2149008672.jpg?w=1000");
+    background-color: rgb(251, 226, 0);
+}
+img{
+    width: 50%;
+    height: 50%;
+}
+.carousel-inner{
+    border-radius: 10px;
+    
+   
+}
+
+.typeWriter{
+  font-family: sans-serif;
+  font-weight:800;
+  font-size:40px;
+  text-align: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:30vh;
+  background:lightcyan;
+}

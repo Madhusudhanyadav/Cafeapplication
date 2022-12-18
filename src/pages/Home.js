@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React from 'react';
 import  { useState,useEffect } from 'react';
-import "../promises/Home.css";
+import "../styles/Home.css";
+// import TypewriterComponent from 'typewriter-effect';
+import {  Link, Outlet } from 'react-router-dom';
 
 
 export default function Home() {
@@ -13,8 +15,31 @@ export default function Home() {
         })
     },[]);
 
+    
   return (
-    <div className="container con">
+    <>
+
+{/* <div className="typeWriter">
+<TypewriterComponent
+  
+  onInit={(typewriter)=> {
+
+  typewriter
+   
+  .typeString("GeeksForGeeks")
+  
+  .pauseFor()
+  .deleteAll()
+  .typeString("Welcomes You")
+  .start();
+  }}
+
+  
+  />
+  </div> */}
+
+      
+    <div className="container d-flex justify-content-center mycontainer">
         
     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-indicators">
@@ -24,13 +49,13 @@ export default function Home() {
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={3} aria-label="Slide 3" />
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={4} aria-label="Slide 3" />
       </div>
-      <div className="carousel-inner">
+      <div className="carousel-inner my-3">
         {
           imageList.map((element)=>{
             return (element.id===1?<div className="carousel-item active" key={element.id}>
-                      <img src={element.url} style={{height:"30rem",width:"30rem"}} className="d-block w-100" alt="..." />
+                      <img src={element.url} style={{width:"30rem",height:"20rem"}}  className="d-block w-100" alt="..." />
                   </div>:<div className="carousel-item " key={element.id}>
-                      <img src={element.url} style={{height:"30rem",width:"30rem"}} className="d-block w-100" alt="..." />
+                      <img src={element.url} style={{width:"30rem",height:"20rem"}} className="d-block w-100" alt="..." />
                   </div>);
           
           })
@@ -55,6 +80,15 @@ export default function Home() {
       </button>
     
     </div>
+
+    
   </div>
+
+    <div className="container d-flex justify-content-around my-3">
+      <Link to={"/user/order"} ><button type="button" className="btn btn-primary">Place Order</button></Link>
+      <button type="button" className="btn btn-primary">Primary</button>
+    </div>
+    <Outlet />
+  </>
   );
 }
