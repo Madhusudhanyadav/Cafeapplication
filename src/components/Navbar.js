@@ -20,7 +20,7 @@ export default function Navbar(props) {
               <Link to={"/about"} className="icon icon-enter"><i className="fa fa-user"><span className='tooltiptext'>About</span></i></Link>
               </li>
               <li className="nav-item mx-3">
-              <Link to={"/login"} className="icon icon-collapse"><i className="fa fa-sign-in"><span className='tooltiptext'>Login</span></i></Link>
+              <Link to="/login" className="icon icon-collapse"><i className="fa fa-sign-in"><span className='tooltiptext'>Login</span></i></Link>
               </li>
               <li className="nav-item mx-3">
               <Link to={"/contact"} className="icon icon-rotate"><i className="fa fa-phone"><span className='tooltiptext'>Contact</span></i></Link>
