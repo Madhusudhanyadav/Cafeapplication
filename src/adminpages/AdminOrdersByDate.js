@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect} from 'react';
 import axios from 'axios';
-export default function AdminOrders() {
+export default function AdminOrdersByDate() {
     const [orders,setOrders]=useState([]);
     
     const update=(event)=>{
@@ -14,7 +14,7 @@ export default function AdminOrders() {
         event.target.parentElement.textContent="delivered";
     }
    useEffect(()=>{
-    axios.get("http://localhost:8080/admin/get/orders").then((response)=>{
+    axios.get("http://localhost:8080/admin/get/ordersbydate").then((response)=>{
       // console.log(response.data);
       setOrders(response.data);
       // console.log(orders);

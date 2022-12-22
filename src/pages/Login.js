@@ -31,8 +31,8 @@ export default function Login(props) {
       console.log(response);
       if(response.data==="success"){
         props.toggle(true);
-        localStorage.setItem("isLogged",true);
-        navigate("/admin/home");
+        localStorage.setItem("isLogged",info["email"]);
+        navigate("/admin/");
       }
     }).catch((err)=>{
       console.log(err);
@@ -67,7 +67,7 @@ export default function Login(props) {
                         <div className="pt-1 mb-4">
                           <button className="btn btn-dark btn-lg btn-block" onClick={handleOnSubmit} type="button">Login</button>
                         </div>
-                        <p className="mb-5 pb-lg-2"  style={{color: '#393f81'}}>Don't have an account? <a href="#!" styler={{color: '#393f81'}}>Register here</a></p>
+                        {/* <p className="mb-5 pb-lg-2"  style={{color: '#393f81'}}>Don't have an account? <a href="#!" styler={{color: '#393f81'}}>Register here</a></p> */}
                         
                       
                     </div>

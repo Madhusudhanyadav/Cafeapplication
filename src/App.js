@@ -13,11 +13,13 @@ import Protected from "./components/Protected";
 
 import Layout from "./adminpages/Layout";
 import AdminOrders from "./adminpages/AdminOrders";
+import Profile from "./adminpages/Profile";
+import AdminOrdersByDate from "./adminpages/AdminOrdersByDate";
 
 
 
 function App() {
-  const [isLoggedIn,setLoggedIn]=useState(true);
+  const [isLoggedIn,setLoggedIn]=useState(localStorage.getItem("isLogged")===null?false:true);
 
   const toggle=(value)=>{
     setLoggedIn(value);
@@ -43,10 +45,19 @@ function App() {
                
             <Route path="/admin/home" element={<Protected isLoggedIn={isLoggedIn}>
                 <Layout />
-                <AdminOrders />
+                <AdminOrders  />
                
               </Protected>} />
-                
+            <Route path="/admin/orders" element={<Protected isLoggedIn={isLoggedIn}>
+                <Layout />
+                <AdminOrdersByDate />
+               
+            </Protected>} />
+              <Route path="/admin/profile" element={<Protected isLoggedIn={isLoggedIn}>
+                <Layout />
+                <Profile />
+               
+              </Protected>} />
             
           </Route>
         </Routes>

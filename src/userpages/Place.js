@@ -252,7 +252,7 @@ export default function Place() {
       </form>
       <form className="myform2" onSubmit={handleOnSubmit}>
         <center><h2>Check Status</h2></center>
-      <div className="input-group mb-3 px-3">
+        <div className="input-group mb-3 px-3">
           <span className="input-group-text" id="inputGroup-sizing-default">
             Your Order no
           </span>
@@ -272,6 +272,8 @@ export default function Place() {
           </center>
         </div>
       </form>
+
+      
     </div>
   );
 }
