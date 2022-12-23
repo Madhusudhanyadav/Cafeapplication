@@ -4,13 +4,15 @@ import { useState,useEffect } from 'react';
 import axios from "axios";
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
+import { useNavigate } from "react-router-dom";
 
 
 
 
-export default function Place() {
+export default function Place(props) {
 
-
+  // Navigate
+  const navigate = useNavigate();
 
   // States
   const [items,setItems] = useState([]);
@@ -45,6 +47,7 @@ export default function Place() {
     // console.log(event.target.parentElement.parentElement);
     if(event.target.name==="ord_no"){
       
+      props.setOrderId(event.target.value);
       setOrd_no(event.target.value);
     }
     else if(event.target.name === "tb_no"){
@@ -272,6 +275,29 @@ export default function Place() {
           </center>
         </div>
       </form>
+
+      <div className="myform">
+        <center><h2>Get Bill</h2></center>
+        <div className="input-group mb-3 px-3">
+          <span className="input-group-text" id="inputGroup-sizing-default">
+                Your Order no
+              </span>
+          <input
+              type="text"
+              className="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              name="ord_no"
+              onChange={handleOnChange}
+              
+              />
+          </div>
+          <center>
+            <button className="btn btn-primary m-3" onClick={()=>{
+              navigate("/user/bill")
+            }}>Get Bill</button>
+          </center>
+      </div>
 
       
     </div>

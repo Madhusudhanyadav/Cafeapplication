@@ -86,7 +86,7 @@ export default function Home() {
 
     <div className="container d-flex justify-content-around my-3">
       <Link to={"/user/order"} ><button type="button" className="btn btn-primary">Place Order</button></Link>
-      <button type="button" className="btn btn-primary">Get bill</button>
+      {/* <button type="button" className="btn btn-primary">Get bill</button> */}
     </div>
     <Outlet />
   </>

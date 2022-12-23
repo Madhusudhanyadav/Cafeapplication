@@ -31,6 +31,7 @@ export default function AdminOrders() {
         <th scope="col">Customer id</th>
         <th scope="col">Customer Name</th>
         <th scope="col">Phone No</th>
+        <th scope="col">Order id</th>
         <th scope="col">Orders</th>
         <th scope="col">Price</th>
         <th scope="col">Status</th>
@@ -43,6 +44,7 @@ export default function AdminOrders() {
                     <th scope="row">{element.c_id}</th>
                     <td>{element.c_name}</td>
                     <td>{element.phno}</td>
+                    <th>{element.ord_id}</th>
                     <td>{element.orderList.map((e,idx)=>{
                         return (<p key={idx}>
                         {e.item_name} : {e.quantity}

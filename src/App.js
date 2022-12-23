@@ -15,12 +15,13 @@ import Layout from "./adminpages/Layout";
 import AdminOrders from "./adminpages/AdminOrders";
 import Profile from "./adminpages/Profile";
 import AdminOrdersByDate from "./adminpages/AdminOrdersByDate";
+import Bill from "./userpages/Bill";
 
 
 
 function App() {
   const [isLoggedIn,setLoggedIn]=useState(localStorage.getItem("isLogged")===null?false:true);
-
+  const [orderId,setOrderId]=useState(152);
   const toggle=(value)=>{
     setLoggedIn(value);
   }
@@ -37,7 +38,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="login" element={<Login toggle={toggle}/>} />
-            <Route path="user/order" element={<Place />} /> 
+            <Route path="user/order" element={<Place setOrderId={setOrderId}/>} /> 
             <Route path="admin/" element={<Protected isLoggedIn={isLoggedIn}>
                 <Layout />
                
@@ -58,6 +59,8 @@ function App() {
                 <Profile />
                
               </Protected>} />
+            
+            <Route path="/user/bill" element={<Bill orderId={orderId} />} />
             
           </Route>
         </Routes>
