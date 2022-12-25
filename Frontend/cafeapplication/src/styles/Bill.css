@@ -1,0 +1,67 @@
+.myCont{
+    background-color: #fff;
+    border-radius: 5px;
+
+}
+
+/* Contact page css*/
+.myCont1{
+    background-color: #fff;
+    border-radius: 5px;
+    /* border:1px solid black; */
+    /* box-shadow: 5px; */
+}
+
+.mycont2{
+    height: 23rem;
+    margin-bottom: 5px;
+    color: white;
+    /* margin-right: 5px; */
+     padding: 5px;
+     border-radius: 5px;
+    background-color: blue;
+}
+
+.fa-map-marker-alt:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.fad{
+   
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.fa-whatsapp{
+    background-color: green;
+    color: white;
+}
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  /* Twitter */
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+  .icont{
+    height: 10rem;
+    
+  }
+
+  .icons{
+    margin-top: 15%;    
+    margin-right: 10%;
+  }
+
+ 
