@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import "../styles/Navbar.css";
 
 export default function Navbar(props) {
+  
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-light " style={{backgroundColor: "rgb(251, 226, 0)"}}>

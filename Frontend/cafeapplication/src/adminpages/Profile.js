@@ -6,12 +6,13 @@ import { useState } from 'react';
 import toast from '../components/toast';
 import "../styles/AdminHome.css";
 
-export default function Profile() {
+export default function Profile(props) {
   // const navigate = useNavigate();
   const [admin,setAdmin]=useState({});
   const [newadmin,setNewAdmin]=useState({});
   const [pass,setNewPass]=useState({});
 
+  props.clearInt();
   useEffect(()=>{
     const url="http://localhost:8080/admin/get/info?email="+localStorage.getItem("isLogged");
     axios.get(url).then((response)=>{

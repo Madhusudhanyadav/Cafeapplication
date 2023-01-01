@@ -22,9 +22,25 @@ import Bill from "./userpages/Bill";
 function App() {
   const [isLoggedIn,setLoggedIn]=useState(localStorage.getItem("isLogged")===null?false:true);
   const [orderId,setOrderId]=useState(152);
+  const [inter,setInter]=useState(0);
+
   const toggle=(value)=>{
     setLoggedIn(value);
   }
+
+  const setInt = (id)=>{
+    setInter(id);
+  }
+
+  const clearInt = () =>{
+    if(inter>0){
+      
+      clearInterval(inter); 
+      setInt(-1);
+    }
+    console.log(inter);
+  }
+
   console.log(isLoggedIn);
   
   return (
@@ -34,30 +50,30 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navbar title="Cafe Application"/>}>
+          <Route path="/" element={<Navbar title="Cafe Application" clearInt={clearInt}/>}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="login" element={<Login toggle={toggle}/>} />
             <Route path="user/order" element={<Place setOrderId={setOrderId}/>} /> 
             <Route path="admin/" element={<Protected isLoggedIn={isLoggedIn}>
-                <Layout />
+                <Layout clearInt={clearInt}/>
                
               </Protected>} /> 
                
-            <Route path="/admin/home" element={<Protected isLoggedIn={isLoggedIn}>
-                <Layout />
-                <AdminOrders  />
+            <Route path="/admin/home" element={<Protected isLoggedIn={isLoggedIn} >
+                <Layout clearInt={clearInt}/>
+                <AdminOrders setInt={setInt} />
                
               </Protected>} />
             <Route path="/admin/orders" element={<Protected isLoggedIn={isLoggedIn}>
-                <Layout />
+                <Layout clearInt={clearInt}/>
                 <AdminOrdersByDate />
                
             </Protected>} />
               <Route path="/admin/profile" element={<Protected isLoggedIn={isLoggedIn}>
-                <Layout />
-                <Profile />
+                <Layout clearInt={clearInt}/>
+                <Profile clearInt={clearInt}/>
                
               </Protected>} />
             

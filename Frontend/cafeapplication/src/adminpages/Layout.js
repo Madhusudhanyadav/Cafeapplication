@@ -5,13 +5,14 @@ import "../styles/AdminHome.css";
 import toast from '../components/toast';
 
 
-export default function Layout() {
+export default function Layout(props) {
     const navigate=useNavigate();
     const redir=(str)=>{
         navigate(str);
     }
 
     const logout=()=>{
+        props.clearInt();
         localStorage.removeItem("isLogged")
         toast("successfully logged out");
         navigate("/");
