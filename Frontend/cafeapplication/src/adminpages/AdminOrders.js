@@ -21,6 +21,7 @@ export default function AdminOrders(props) {
       setOrders(response.data);
       // console.log(orders);
     })
+    // console.log("hello");
     props.setInt(setInterval(async ()=>{
         
         await axios.get("http://localhost:8080/admin/get/orders").then((response)=>{

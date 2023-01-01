@@ -27,6 +27,7 @@ export default function Layout(props) {
            redir("/admin/orders")
         }}>Get Today's Orders</button>
         <button type="button" className="btn btn-danger" onClick={()=>{
+            props.clearInt();
             redir("/admin/profile")
         }}>My Profile</button>
         

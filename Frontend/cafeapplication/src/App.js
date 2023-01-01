@@ -33,12 +33,13 @@ function App() {
   }
 
   const clearInt = () =>{
+    console.log(inter);
     if(inter>0){
       
       clearInterval(inter); 
       setInt(-1);
     }
-    console.log(inter);
+    
   }
 
   console.log(isLoggedIn);
@@ -50,7 +51,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navbar title="Cafe Application" clearInt={clearInt}/>}>
+          <Route path="/" element={<Navbar title="Cafe Application" />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
