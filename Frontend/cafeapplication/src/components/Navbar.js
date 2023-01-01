@@ -14,16 +14,16 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item mx-3">
-              <Link to={"/"} className="icon icon-fill"><i className="fa fa-home"><span className='tooltiptext'>Home</span></i></Link>
+              <Link to={"/"} className="icon icon-fill"><i className="fa fa-home" style={{color:"black"}} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home"></i></Link>
               </li>
               <li className="nav-item mx-3">
-              <Link to={"/about"} className="icon icon-enter"><i className="fa fa-user"><span className='tooltiptext'>About</span></i></Link>
+              <Link to={"/about"} className="icon icon-enter"><i className="fa fa-user" style={{color:"black"}} data-bs-toggle="tooltip" data-bs-placement="bottom" title="About"></i></Link>
               </li>
               <li className="nav-item mx-3">
-              <Link to="/login" className="icon icon-collapse"><i className="fa fa-sign-in"><span className='tooltiptext'>Login</span></i></Link>
+              <Link to="/login" className="icon icon-collapse"><i className="fa fa-sign-in" style={{color:"black"}}  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login"></i></Link>
               </li>
               <li className="nav-item mx-3">
-              <Link to={"/contact"} className="icon icon-rotate"><i className="fa fa-phone"><span className='tooltiptext'>Contact</span></i></Link>
+              <Link to={"/contact"} className="icon icon-rotate"><i className="fa fa-phone" style={{color:"black"}} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contact"></i></Link>
               </li>
 
             </ul>

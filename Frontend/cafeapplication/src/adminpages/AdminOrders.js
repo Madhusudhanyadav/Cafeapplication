@@ -3,7 +3,9 @@ import { useState,useEffect} from 'react';
 import axios from 'axios';
 export default function AdminOrders() {
     const [orders,setOrders]=useState([]);
-    
+    // const [count,setCount] = useState();
+
+
     const update=(event)=>{
         console.log(event.target);
         const url="http://localhost:8080/admin/update/status?cid="+event.target.id+"&st="+event.target.textContent+"ed";

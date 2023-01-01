@@ -28,8 +28,9 @@
     z-index: 1;
   }
 
-  .fa-home:hover .tooltiptext {
+  .fa-home:hover{
     visibility: visible;
+    
   }
 
   .fa-user:hover .tooltiptext {
