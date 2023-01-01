@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState,useEffect} from 'react';
 import axios from 'axios';
-export default function AdminOrdersByDate() {
+export default function AdminOrdersByDate(props) {
     const [orders,setOrders]=useState([]);
+    
+    props.clearIntById(1);
     
     const update=(event)=>{
         console.log(event.target);
@@ -14,11 +16,25 @@ export default function AdminOrdersByDate() {
         event.target.parentElement.textContent="delivered";
     }
    useEffect(()=>{
+    
     axios.get("http://localhost:8080/admin/get/ordersbydate").then((response)=>{
       // console.log(response.data);
       setOrders(response.data);
       // console.log(orders);
     })
+    
+    props.setInt2(setInterval(async ()=>{
+        
+        await axios.get("http://localhost:8080/admin/get/ordersbydate").then((response)=>{
+            console.log(response.data);
+            setOrders(response.data);
+      
+        })
+        // console.log("tick");
+    },5000) )
+    
+    
+
    },[])
 
 

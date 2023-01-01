@@ -5,6 +5,7 @@ export default function AdminOrders(props) {
     const [orders,setOrders]=useState([]);
     // const [count,setCount] = useState();
 
+    props.clearIntById(2);
 
     const update=(event)=>{
         console.log(event.target);

@@ -22,8 +22,8 @@ import Bill from "./userpages/Bill";
 function App() {
   const [isLoggedIn,setLoggedIn]=useState(localStorage.getItem("isLogged")===null?false:true);
   const [orderId,setOrderId]=useState(152);
-  const [inter,setInter]=useState(0);
-
+  const [inter,setInter]=useState(0); // Admin Order set interval helper state
+  const [inter2,setInter2] = useState(0); // Admin Order by date set interval helper state
   const toggle=(value)=>{
     setLoggedIn(value);
   }
@@ -32,12 +32,37 @@ function App() {
     setInter(id);
   }
 
+  const setInt2 = (id) =>{
+    setInter2(id);
+  }
+
+  const clearIntById = (id) => {
+    if(id === 1){
+      if(inter>0){
+      
+        clearInterval(inter); 
+        setInter(-1);
+      }
+    }
+    else{
+      if(inter2 > 0){
+        clearInterval(inter2);
+        setInter2(-1);
+      }
+    }
+  }
+
+
   const clearInt = () =>{
-    console.log(inter);
+    console.log(inter,inter2);
     if(inter>0){
       
       clearInterval(inter); 
-      setInt(-1);
+      setInter(-1);
+    }
+    if(inter2 > 0){
+      clearInterval(inter2);
+      setInt2(-1);
     }
     
   }
@@ -51,7 +76,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navbar title="Cafe Application" />}>
+          <Route path="/" element={<Navbar title="Cafe Application" clearInt={clearInt}/> }>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
@@ -64,12 +89,12 @@ function App() {
                
             <Route path="/admin/home" element={<Protected isLoggedIn={isLoggedIn} >
                 <Layout clearInt={clearInt}/>
-                <AdminOrders setInt={setInt} />
+                <AdminOrders setInt={setInt} clearIntById={clearIntById}/>
                
               </Protected>} />
             <Route path="/admin/orders" element={<Protected isLoggedIn={isLoggedIn}>
                 <Layout clearInt={clearInt}/>
-                <AdminOrdersByDate />
+                <AdminOrdersByDate setInt2={setInt2} clearIntById={clearIntById}/>
                
             </Protected>} />
               <Route path="/admin/profile" element={<Protected isLoggedIn={isLoggedIn}>
