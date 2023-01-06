@@ -69,9 +69,9 @@ export default function Contact() {
         <div className="my-3 container">
           <h5>Contact us</h5>
           
-          <pre><i class='fas fa-map-marker-alt'></i>   Address : </pre>
-          <pre><i class='fas fas fa-phone'></i>   PhNo : +916281662141</pre>
-          <pre><i class='fas fas fa-location-arrow'></i>   Email : madhugangaboina001@gmail.com</pre>
+          <pre><i className='fas fa-map-marker-alt'></i>   Address : </pre>
+          <pre><i className='fas fas fa-phone'></i>   PhNo : +916281662141</pre>
+          <pre><i className='fas fas fa-location-arrow'></i>   Email : madhugangaboina001@gmail.com</pre>
           
         </div>
         <div className='container icont'> 

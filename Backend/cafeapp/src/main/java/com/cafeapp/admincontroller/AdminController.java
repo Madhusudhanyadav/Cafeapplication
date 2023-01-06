@@ -70,8 +70,10 @@ public class AdminController {
 	@PostMapping("post/login")
 	public String auth(@RequestBody Admin admin) {
 		
+		
 		Admin ad=admin_repo.getAdminByEmail(admin.getEmail());
 //		System.out.println(ad.getPwd()+" "+admin.getPwd());
+		
 		if(ad==null || ad.getEmail().equals(admin.getPwd()))
 			return "failed";
 		return "success";
