@@ -14,6 +14,7 @@ export default function Layout(props) {
     const logout=()=>{
         props.clearInt();
         localStorage.removeItem("isLogged")
+        localStorage.removeItem("token");
         toast("successfully logged out");
         navigate("/");
     }

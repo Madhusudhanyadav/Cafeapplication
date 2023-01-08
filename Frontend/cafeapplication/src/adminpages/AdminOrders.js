@@ -6,18 +6,24 @@ export default function AdminOrders(props) {
     // const [count,setCount] = useState();
 
     props.clearIntById(2);
-
+    const config = {
+        headers : {'Authorization':"Bearer "+localStorage.getItem("token")}
+    }
     const update=(event)=>{
         console.log(event.target);
         const url="http://localhost:8080/admin/update/status?cid="+event.target.id+"&st="+event.target.textContent+"ed";
         console.log(url)
-        axios.get(url).then((response)=>{
+        axios.get(url,{
+            config
+        }).then((response)=>{
             console.log(response);
         })
         event.target.parentElement.textContent="delivered";
     }
    useEffect(()=>{
-    axios.get("http://localhost:8080/admin/get/orders").then((response)=>{
+    axios.get("http://localhost:8080/admin/get/orders",
+        config 
+    ).then((response)=>{
       // console.log(response.data);
       setOrders(response.data);
       // console.log(orders);
@@ -25,7 +31,7 @@ export default function AdminOrders(props) {
     // console.log("hello");
     props.setInt(setInterval(async ()=>{
         
-        await axios.get("http://localhost:8080/admin/get/orders").then((response)=>{
+        await axios.get("http://localhost:8080/admin/get/orders",config).then((response)=>{
             console.log(response.data);
             setOrders(response.data);
       

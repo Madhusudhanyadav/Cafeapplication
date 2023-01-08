@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from '../components/toast';
 
 export default function Login(props) {
   const navigate=useNavigate();
@@ -27,12 +28,16 @@ export default function Login(props) {
   }
 
   const handleOnSubmit=()=>{
-    axios.post("http://localhost:8080/admin/post/login",info).then((response)=>{
+    axios.post("http://localhost:8080/post/login",info).then((response)=>{
       console.log(response);
-      if(response.data==="success"){
+      if(response.data!==''){
         props.toggle(true);
         localStorage.setItem("isLogged",info["email"]);
+        localStorage.setItem("token",response.data.token);
         navigate("/admin/");
+      }
+      else{
+        toast("Invalid Credentials");
       }
     }).catch((err)=>{
       console.log(err);

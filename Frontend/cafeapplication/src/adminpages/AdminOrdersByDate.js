@@ -1,10 +1,14 @@
 import React from 'react'
 import { useState,useEffect} from 'react';
 import axios from 'axios';
+// import { configure } from '@testing-library/react';
 export default function AdminOrdersByDate(props) {
     const [orders,setOrders]=useState([]);
-    
+    const config = {
+        headers : {'Authorization':"Bearer "+localStorage.getItem("token")}
+    }
     props.clearIntById(1);
+    
     
     const update=(event)=>{
         console.log(event.target);
@@ -17,16 +21,16 @@ export default function AdminOrdersByDate(props) {
     }
    useEffect(()=>{
     
-    axios.get("http://localhost:8080/admin/get/ordersbydate").then((response)=>{
-      // console.log(response.data);
+    axios.get("http://localhost:8080/admin/get/ordersbydate",config).then((response)=>{
+      console.log(response.data);
       setOrders(response.data);
       // console.log(orders);
     })
     
     props.setInt2(setInterval(async ()=>{
         
-        await axios.get("http://localhost:8080/admin/get/ordersbydate").then((response)=>{
-            console.log(response.data);
+        await axios.get("http://localhost:8080/admin/get/ordersbydate",config).then((response)=>{
+            // console.log(response.data);
             setOrders(response.data);
       
         })

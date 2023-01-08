@@ -24,6 +24,8 @@ function App() {
   const [orderId,setOrderId]=useState(152);
   const [inter,setInter]=useState(0); // Admin Order set interval helper state
   const [inter2,setInter2] = useState(0); // Admin Order by date set interval helper state
+  
+
   const toggle=(value)=>{
     setLoggedIn(value);
   }
@@ -42,12 +44,16 @@ function App() {
       
         clearInterval(inter); 
         setInter(-1);
+        console.log(inter,inter2);
+        
       }
     }
     else{
       if(inter2 > 0){
         clearInterval(inter2);
         setInter2(-1);
+      console.log(inter,inter2);
+
       }
     }
   }

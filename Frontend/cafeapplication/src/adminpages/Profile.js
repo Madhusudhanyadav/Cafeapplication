@@ -11,11 +11,15 @@ export default function Profile(props) {
   const [admin,setAdmin]=useState({});
   const [newadmin,setNewAdmin]=useState({});
   const [pass,setNewPass]=useState({});
-
+  const config = {
+    headers : {Authorization : 'Bearer '+localStorage.getItem("token")}
+  }
   props.clearInt();
   useEffect(()=>{
     const url="http://localhost:8080/admin/get/info?email="+localStorage.getItem("isLogged");
-    axios.get(url).then((response)=>{
+
+    // console.log(config);
+    axios.get(url,config).then((response)=>{
 
       // console.log(response.data);
       setAdmin(response.data);
@@ -37,9 +41,6 @@ export default function Profile(props) {
     // else if(event.target.name === "email" ){
     //   tp["email"]=event.target.value;
     // }
-    else if(event.target.name === "old_pass"){
-      tp2["oldpass"]=event.target.value;
-    }
     else if(event.target.name === "new_pass"){
       // setNewPass(event.target.value);
       tp2["newpass"]=event.target.value;
@@ -53,31 +54,18 @@ export default function Profile(props) {
   
  // Submit
   const handleOnSubmit = (event)=>{
-    // if((pass["oldpass"] === undefined && pass["newpass"] !== "")||(pass["oldpass"] !== "" && pass["newpass"] === undefined)){
-    //   toast("enter passwords");
-    //   return ;
-    // }
-    if((pass["oldpass"] !== undefined && pass["newpass"] !== undefined) || (pass["oldpass"] === "" && pass["newpass"] === "")){
-      
-      if(pass["oldpass"] === "" && pass["newpass"] === ""){
-        // toast("password is empty ")
-        
-        // return ;
-        
-      }
-      else if(pass["oldpass"] !== admin["pwd"]){
-        toast("old password and newpassword doesn't match")
-        return ;
-      }
-      // return ;
-      
+    if((pass['newpass'] === undefined && newadmin['name'] === undefined )||( pass['newpass'] === '' && newadmin['name'] === '')){
+      toast("Enter fields");
+      return ;
     }
+    
+    
     const tp=admin;
-    const tp2=newadmin;
+    // const tp2=newadmin;
     if(pass["newpass"]!==""){
-      if(tp2["oldpass"] === admin["pwd"]){
+      // if(tp2["oldpass"] === admin["pwd"]){
         tp["pwd"]=pass["newpass"];
-      }
+      // }
     }
     else if(newadmin["name"]!==""){
       
@@ -92,14 +80,11 @@ export default function Profile(props) {
 
  // UPDATE
  const update = () =>{
-  axios.post("http://localhost:8080/admin/update/info",admin).then((response)=>{
+  axios.post("http://localhost:8080/admin/update/info",admin,config).then((response)=>{
     if(response.status === 200){
       toast("successfully updated");
       // console.log(document.getElementsByName("name"));
-      document.getElementsByName("name")[0].value="";
-      // document.getElementsByName
-      document.getElementsByName("old_pass")[0].value="";
-      document.getElementsByName("new_pass")[0].value="";
+      
 
     }
   })
@@ -131,13 +116,9 @@ export default function Profile(props) {
         
       </div>
       <div className='d-flex justify-content-start py-3'>
+        
         <div className="input-group mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-default">Old Password </span>
-          <input type="password" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name='old_pass' onChange={handleOnChange}/>
-
-        </div>
-        <div className="input-group mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-default">New Email</span>
+          <span className="input-group-text" id="inputGroup-sizing-default">New Password</span>
           <input type="password" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name='new_pass' onChange={handleOnChange}/>
         </div>
       </div>
