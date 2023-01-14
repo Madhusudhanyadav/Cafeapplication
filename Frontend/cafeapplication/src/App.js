@@ -22,7 +22,7 @@ import Bill from "./userpages/Bill";
 function App() {
   const [isLoggedIn,setLoggedIn]=useState(localStorage.getItem("isLogged")===null?false:true);
   const [orderId,setOrderId]=useState(152);
-  const [inter,setInter]=useState(0); // Admin Order set interval helper state
+  // const [inter,setInter]=useState(0); // Admin Order set interval helper state
   const [inter2,setInter2] = useState(0); // Admin Order by date set interval helper state
   
 
@@ -30,42 +30,35 @@ function App() {
     setLoggedIn(value);
   }
 
-  const setInt = (id)=>{
-    setInter(id);
-  }
-
+  
   const setInt2 = (id) =>{
     setInter2(id);
   }
 
-  const clearIntById = (id) => {
-    if(id === 1){
-      if(inter>0){
+  // const clearIntById = async (id) => {
+  //   if(id === 1){
+  //     if(inter>0){
       
-        clearInterval(inter); 
-        setInter(-1);
-        console.log(inter,inter2);
+  //       clearInterval(inter); 
+  //       setInter(-1);
+  //       console.log(inter,inter2);
         
-      }
-    }
-    else{
-      if(inter2 > 0){
-        clearInterval(inter2);
-        setInter2(-1);
-      console.log(inter,inter2);
+  //     }
+  //   }
+  //   else{
+  //     if(inter2 > 0){
+  //       clearInterval(inter2);
+  //       setInter2(-1);
+  //     console.log(inter,inter2);
 
-      }
-    }
-  }
+  //     }
+  //   }
+  // }
 
 
   const clearInt = () =>{
-    console.log(inter,inter2);
-    if(inter>0){
-      
-      clearInterval(inter); 
-      setInter(-1);
-    }
+    console.log(inter2);
+    
     if(inter2 > 0){
       clearInterval(inter2);
       setInt2(-1);
@@ -95,12 +88,12 @@ function App() {
                
             <Route path="/admin/home" element={<Protected isLoggedIn={isLoggedIn} >
                 <Layout clearInt={clearInt}/>
-                <AdminOrders setInt={setInt} clearIntById={clearIntById}/>
+                <AdminOrders />
                
               </Protected>} />
             <Route path="/admin/orders" element={<Protected isLoggedIn={isLoggedIn}>
                 <Layout clearInt={clearInt}/>
-                <AdminOrdersByDate setInt2={setInt2} clearIntById={clearIntById}/>
+                <AdminOrdersByDate setInt2={setInt2} />
                
             </Protected>} />
               <Route path="/admin/profile" element={<Protected isLoggedIn={isLoggedIn}>

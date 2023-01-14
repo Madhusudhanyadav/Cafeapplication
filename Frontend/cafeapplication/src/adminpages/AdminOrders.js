@@ -1,26 +1,27 @@
 import React from 'react'
 import { useState,useEffect} from 'react';
 import axios from 'axios';
-export default function AdminOrders(props) {
+export default function AdminOrders() {
     const [orders,setOrders]=useState([]);
     // const [count,setCount] = useState();
 
-    props.clearIntById(2);
+    // props.clearIntById(2);
     const config = {
         headers : {'Authorization':"Bearer "+localStorage.getItem("token")}
     }
     const update=(event)=>{
-        console.log(event.target);
+        // console.log(event.target);
+        const ur = "http://localhost:8080/admin/update/status?cid=2&st=Delivered";
         const url="http://localhost:8080/admin/update/status?cid="+event.target.id+"&st="+event.target.textContent+"ed";
-        console.log(url)
-        axios.get(url,{
-            config
-        }).then((response)=>{
+        console.log(url,config);
+        axios.get(url,config
+        ).then((response)=>{
             console.log(response);
         })
         event.target.parentElement.textContent="delivered";
     }
    useEffect(()=>{
+    
     axios.get("http://localhost:8080/admin/get/orders",
         config 
     ).then((response)=>{
@@ -29,15 +30,16 @@ export default function AdminOrders(props) {
       // console.log(orders);
     })
     // console.log("hello");
-    props.setInt(setInterval(async ()=>{
+    // props.setInt(setInterval(async ()=>{
         
-        await axios.get("http://localhost:8080/admin/get/orders",config).then((response)=>{
-            console.log(response.data);
-            setOrders(response.data);
+        
+    //     await axios.get("http://localhost:8080/admin/get/orders",config).then((response)=>{
+    //         // console.log(response.data);
+    //         setOrders(response.data);
       
-        })
-        // console.log("tick");
-    },5000) )
+    //     })
+    //     // console.log("tick");
+    // },5000) )
     
     // clearInterval(myInterval);
    },[])

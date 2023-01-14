@@ -2,18 +2,21 @@ import React from 'react'
 import { useState,useEffect} from 'react';
 import axios from 'axios';
 // import { configure } from '@testing-library/react';
-export default function AdminOrdersByDate(props) {
+export default  function AdminOrdersByDate(props) {
     const [orders,setOrders]=useState([]);
     const config = {
         headers : {'Authorization':"Bearer "+localStorage.getItem("token")}
     }
-    props.clearIntById(1);
+
+
+    // props.clearIntById(1);
     
+    helper();
     
     const update=(event)=>{
-        console.log(event.target);
+        // console.log(event.target);
         const url="http://localhost:8080/admin/update/status?cid="+event.target.id+"&st="+event.target.textContent+"ed";
-        console.log(url)
+        // console.log(url)
         axios.get(url).then((response)=>{
             console.log(response);
         })
@@ -22,7 +25,7 @@ export default function AdminOrdersByDate(props) {
    useEffect(()=>{
     
     axios.get("http://localhost:8080/admin/get/ordersbydate",config).then((response)=>{
-      console.log(response.data);
+    //   console.log(response.data);
       setOrders(response.data);
       // console.log(orders);
     })
@@ -43,7 +46,7 @@ export default function AdminOrdersByDate(props) {
 
 
   return (
-    <div className="container cont">
+    <div className="container cont " id='tb12'>
         <h1>Orders</h1>
     <table className="table table-striped">
     <thead>
@@ -83,4 +86,9 @@ export default function AdminOrdersByDate(props) {
     </table>
     </div>
   )
+}
+
+
+const helper = ()=>{
+
 }
